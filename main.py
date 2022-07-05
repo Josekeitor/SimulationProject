@@ -8,3 +8,7 @@ print("H0 is not rejected " if chi.chiSquaredPassed('InputFiles/chi_data-2.txt',
 list = [10,20,5,2,7,15]   
 result_list = runT.checkSign(list)
 numberStreak = runT.getStreak(result_list)
+totalSign = runT.countSignNumber(result_list)
+expVal = runT.getExpectedValue(totalSign)
+variVal = runT.getVarinece(totalSign)
+runT.getRunTestResult(expVal,variVal,numberStreak)
