@@ -1,4 +1,4 @@
-import ChiSquaredTest as chi
+import chiSquaredTest as chi
 import numberGenerator as numGen
 
 print(numGen.randomNumbers(6, 32, 3, 80, 10))
