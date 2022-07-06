@@ -1,4 +1,3 @@
-
 def checkSign(list):
     signList = []
     for i in range(len(list) - 1):
@@ -24,16 +23,22 @@ def getStreak(signList):
     print(numberStreak)
     return numberStreak
 
-def getExpectedValue(totalSign):
-    formula = (2(totalSign)-1)/3
+def getExpectedValue(numberStreak):
+    formula = ((2*numberStreak)-1)/3
     return formula
 
 def getVarinece(totalSign):
-    resultFormula = ((16(totalSign))-29)/90
+    resultFormula = ((16*totalSign)-29)/90
     return resultFormula
 
 def getRunTestResult(expVal,variVal, numberStreak):
      
     resultFormula = (numberStreak-expVal)/variVal
-    print(resultFormula)
+    tableValue = 1.96
+    print("H0 los numeros aparecen de manera aletoria, H1: los numeros no aparecen de forma aleatroia ")
+    print("Estadistico de prueba es:", resultFormula)
+    if  abs(resultFormula) < tableValue:
+        print("H0 no se rechaza")
+    else:
+        print("H1 se rechaza")
     return resultFormula
