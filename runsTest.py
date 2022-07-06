@@ -15,10 +15,8 @@ def countSignNumber(signList):
     
 def getStreak(signList):
     numberStreak = 0
-    for i in range(len(signList) - 1):
-        if signList[i+1] != signList[i]:
-            numberStreak = numberStreak +1
-        if signList[i+1] == signList[i]:
+    for i in range(len(signList)):
+        if i == 0 or signList[i] !=signList[i-1]:
             numberStreak = numberStreak + 1
     print(numberStreak)
     return numberStreak
