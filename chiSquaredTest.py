@@ -1,4 +1,4 @@
-import frequencyTables.frequencyTables as freq
+import chiFrequencyTable as freq
 def chiSquaredPassed(filename, digits):
     observed = freq.getChiFrequencyTable(digits, filename, 10, 0.1, 0, 1)
     expected = sum(observed.values()) / 10
