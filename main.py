@@ -1,6 +1,6 @@
 import chiSquaredTest as chi
 import numberGenerator as numGen
-import runsTest as runT
+import runsTest as runsT
 
 from pathlib import Path
 
@@ -12,4 +12,4 @@ print(numGen.randomNumbers(6, 32, 3, 80, 10))
 print("H0 is not rejected " if chi.chiSquaredPassed(
     chi_data, 4) else "H0 is rejected")
 
-runT.runsTest(runs_data, 4)
+runsT.runsTest(runs_data, 4)
