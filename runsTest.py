@@ -70,7 +70,7 @@ def runsTest(file_name, decimals):
 
     print('Runs test')
     print('Generated signs')
-    print(signs)
+    print(' '.join(signs))
     print(f'total: {n}')
     print(f'total runs: {runs}')
     print(f'Sigma: {variance}')
