@@ -12,5 +12,4 @@ print(numGen.randomNumbers(6, 32, 3, 80, 10))
 print("H0 is not rejected " if chi.chiSquaredPassed(
     chi_data, 4) else "H0 is rejected")
 
-print("H0 is not rejected " if runT.runsTestPassed(
-    runs_data, 4) else "H0 is rejected")
+runT.runsTest(runs_data, 4)

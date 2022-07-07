@@ -1,53 +1,53 @@
 import math
 
 
-def checkSign(list):
-    signList = []
-    for i in range(len(list) - 1):
-        if list[i + 1] < list[i]:
-            signList.append("+")
+def getSigns(values):
+    signs = []
+
+    for i in range(len(values) - 1):
+        if values[i + 1] > values[i]:
+            signs.append('+')
         else:
-            signList.append("-")
-    print(signList)
-    return signList
+            signs.append('-')
+
+    return signs
 
 
-def countSignNumber(signList):
-    signNumber = len(signList)
-    print(signNumber)
-    return signNumber
+def countSigns(signs):
+    return len(signs)
 
 
-def getStreak(signList):
-    numberStreak = 0
-    for i in range(len(signList)):
-        if i == 0 or signList[i] != signList[i-1]:
-            numberStreak = numberStreak + 1
-    print(numberStreak)
-    return numberStreak
+def getRuns(signs):
+    if not signs:
+        return 0
+
+    runs = 1
+
+    for i in range(len(signs) - 1):
+        if signs[i + 1] != signs[i]:
+            runs += 1
+
+    return runs
 
 
-def getExpectedValue(numberStreak):
-    formula = ((2*numberStreak)-1)/3
-    return formula
+def getExpectedValue(n, decimals):
+    return round(((2 * n) - 1) / 3, decimals)
 
 
-def getVarinece(totalSign):
-    resultFormula = math.sqrt(((16*totalSign)-29)/90)
-    return resultFormula
+def getVariance(n, decimals):
+    return round(math.sqrt(((16 * n) - 29) / 90), decimals)
 
 
-def getRunTestResult(expVal, variVal, numberStreak):
-    resultFormula = (numberStreak-expVal)/variVal
-    tableValue = 1.96
-    print("H0 los numeros aparecen de manera aletoria, H1: los numeros no aparecen de forma aleatoria")
-    print("Estadistico de prueba es:", resultFormula)
-
-    return abs(resultFormula) < tableValue
+def getStandardScore(expectedValue, variance, runs, decimals):
+    return round((runs - expectedValue) / variance, decimals)
 
 
-def readList(file_name, decimals):
-    file_data = open(file_name, 'r')
+def getRunsTestResult(zscore, tableValue):
+    return abs(zscore) < abs(tableValue)
+
+
+def readValues(fileName, decimals):
+    file_data = open(fileName, 'r')
     raw_data = []
 
     for element in file_data.readlines():
@@ -56,11 +56,30 @@ def readList(file_name, decimals):
     return raw_data
 
 
-def runsTestPassed(file_name, decimals):
-    list = readList(file_name, decimals)
-    result_list = checkSign(list)
-    numberStreak = getStreak(result_list)
-    totalSign = countSignNumber(result_list)
-    expVal = getExpectedValue(totalSign)
-    variVal = getVarinece(totalSign)
-    return getRunTestResult(expVal, variVal, numberStreak)
+def runsTest(file_name, decimals):
+    tableValue = 1.96
+
+    values = readValues(file_name, decimals)
+    signs = getSigns(values)
+    runs = getRuns(signs)
+    n = countSigns(signs)
+    expectedValue = getExpectedValue(n, decimals)
+    variance = getVariance(n, decimals)
+    zscore = getStandardScore(expectedValue, variance, runs, decimals)
+    res = getRunsTestResult(zscore, tableValue)
+
+    print('Runs test')
+    print('Generated signs')
+    print(signs)
+    print(f'total: {n}')
+    print(f'total runs: {runs}')
+    print(f'Sigma: {variance}')
+    print(f'Zscore: {zscore}')
+    print()
+    print('H0: Appereance of the numbers is random')
+    print('H1: Appereance of the numbers is not random')
+
+    if res:
+        print(f'Since |{zscore}| < |{tableValue}|, H0 is not rejected')
+    else:
+        print(f'Since |{zscore}| > |{tableValue}|, H0 is rejected')
