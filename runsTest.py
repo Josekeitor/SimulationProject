@@ -73,6 +73,8 @@ def runsTest(file_name, decimals):
     print(' '.join(signs))
     print(f'total: {n}')
     print(f'total runs: {runs}')
+    print('Statistics')
+    print(f'Miu: {expectedValue}')
     print(f'Sigma: {variance}')
     print(f'Zscore: {zscore}')
     print()
