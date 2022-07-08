@@ -33,11 +33,5 @@ def getChiFrequencyTable(decimals, file_name, classes, interval, start, end):
         for category in categories:
             if data_point >= category[0] and data_point < category[1]:
                 results[category[2]] += 1
-    print()
-    print("Classes: ", classes)
-    print("Interval: ", interval)
-    print(results)
-    print("Sum of frequencies: ", sum(list(results.values())))
-    print()
 
     return results

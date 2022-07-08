@@ -68,7 +68,8 @@ def runsTest(file_name, decimals):
     zscore = getStandardScore(expectedValue, variance, runs, decimals)
     res = getRunsTestResult(zscore, tableValue)
 
-    print('Runs test')
+    print()
+    print('Runs test:')
     print('Generated signs')
     print(' '.join(signs))
     print(f'total: {n}')
