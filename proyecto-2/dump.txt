@@ -1,0 +1,10 @@
+headers = [
+    'Cliente',
+    'Tiempo entre llegadas',
+    'Hora de llegada',
+    'Tiempo del trámite',
+    'Inicia servicio',
+    'Termina servicio',
+    'Tiempo de espera cliente',
+    'Tiempo inactividad del ATM'
+]

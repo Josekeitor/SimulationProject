@@ -1,0 +1,23 @@
+  client    time_btw_arrivals  arrival_time      transaction_duration  service_start_time    service_end_time      wait_time    atm_inactivity_time
+--------  -------------------  --------------  ----------------------  --------------------  ------------------  -----------  ---------------------
+       1                    0  09:00 AM                             3  09:00 AM              09:03 AM                      0                      0
+       2                    1  09:01 AM                             2  09:03 AM              09:05 AM                      2                      0
+       3                    4  09:05 AM                             4  09:05 AM              09:09 AM                      0                      0
+       4                    8  09:13 AM                             5  09:13 AM              09:18 AM                      0                      4
+       5                    9  09:22 AM                             4  09:22 AM              09:26 AM                      0                      4
+       6                   10  09:32 AM                             2  09:32 AM              09:34 AM                      0                      6
+       7                    9  09:41 AM                             5  09:41 AM              09:46 AM                      0                      7
+       8                   10  09:51 AM                             2  09:51 AM              09:53 AM                      0                      5
+       9                    2  09:53 AM                             1  09:53 AM              09:54 AM                      0                      0
+      10                    9  10:02 AM                             1  10:02 AM              10:03 AM                      0                      8
+Tiempo de espera promedio por cliente
+2 min/10 clientes = 0.2 min de espera para ser atendidos
+
+Probabilidad de que un cliente espere en la fila
+1 clientes esperando / 10 clientes = 10.0%
+
+Porcentaje de tiempo en el que el ATM estuvo inactivo
+34 min inactivo / 62 min total = 54.84%
+
+Tiempo promedio de servicio
+26 min trámite / 10 clientes = 2.6 min de realizar el trámite
