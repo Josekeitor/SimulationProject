@@ -1,23 +1,33 @@
   client    time_btw_arrivals  arrival_time      transaction_duration  service_start_time    service_end_time      wait_time    atm_inactivity_time
 --------  -------------------  --------------  ----------------------  --------------------  ------------------  -----------  ---------------------
-       1                    0  09:00 AM                             3  09:00 AM              09:03 AM                      0                      0
-       2                    1  09:01 AM                             2  09:03 AM              09:05 AM                      2                      0
-       3                    4  09:05 AM                             4  09:05 AM              09:09 AM                      0                      0
-       4                    8  09:13 AM                             5  09:13 AM              09:18 AM                      0                      4
-       5                    9  09:22 AM                             4  09:22 AM              09:26 AM                      0                      4
-       6                   10  09:32 AM                             2  09:32 AM              09:34 AM                      0                      6
-       7                    9  09:41 AM                             5  09:41 AM              09:46 AM                      0                      7
-       8                   10  09:51 AM                             2  09:51 AM              09:53 AM                      0                      5
-       9                    2  09:53 AM                             1  09:53 AM              09:54 AM                      0                      0
-      10                    9  10:02 AM                             1  10:02 AM              10:03 AM                      0                      8
+       1                    0  09:00 AM                             5  09:00 AM              09:05 AM                      0                      0
+       2                    1  09:01 AM                            15  09:05 AM              09:20 AM                      4                      0
+       3                   10  09:11 AM                            27  09:20 AM              09:47 AM                      9                      0
+       4                    7  09:18 AM                             5  09:47 AM              09:52 AM                     29                      0
+       5                    6  09:24 AM                            10  09:52 AM              10:02 AM                     28                      0
+       6                    8  09:32 AM                            22  10:02 AM              10:24 AM                     30                      0
+       7                    3  09:35 AM                            14  10:24 AM              10:38 AM                     49                      0
+       8                    5  09:40 AM                            11  10:38 AM              10:49 AM                     58                      0
+       9                    1  09:41 AM                             1  10:49 AM              10:50 AM                     68                      0
+      10                    5  09:46 AM                            15  10:50 AM              11:05 AM                     64                      0
+      11                    9  09:55 AM                            24  11:05 AM              11:29 AM                     70                      0
+      12                    8  10:03 AM                             1  11:29 AM              11:30 AM                     86                      0
+      13                    3  10:06 AM                             9  11:30 AM              11:39 AM                     84                      0
+      14                    5  10:11 AM                            14  11:39 AM              11:53 AM                     88                      0
+      15                    9  10:20 AM                            11  11:53 AM              12:04 PM                     93                      0
+      16                    6  10:26 AM                            23  12:04 PM              12:27 PM                     98                      0
+      17                    5  10:31 AM                            19  12:27 PM              12:46 PM                    116                      0
+      18                    2  10:33 AM                            18  12:46 PM              13:04 PM                    133                      0
+      19                    7  10:40 AM                             1  13:04 PM              13:05 PM                    144                      0
+      20                    4  10:44 AM                             6  13:05 PM              13:11 PM                    141                      0
 Tiempo de espera promedio por cliente
-2 min/10 clientes = 0.2 min de espera para ser atendidos
+1392 min/20 clientes = 69.6 min de espera para ser atendidos
 
 Probabilidad de que un cliente espere en la fila
-1 clientes esperando / 10 clientes = 10.0%
+19 clientes esperando / 20 clientes = 95.0%
 
 Porcentaje de tiempo en el que el ATM estuvo inactivo
-34 min inactivo / 62 min total = 54.84%
+0 min inactivo / 104 min total = 0.0%
 
 Tiempo promedio de servicio
-26 min trámite / 10 clientes = 2.6 min de realizar el trámite
+246 min trámite / 20 clientes = 12.3 min de realizar el trámite

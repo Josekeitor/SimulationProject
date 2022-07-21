@@ -11,7 +11,6 @@ def is_valid_input(str):
         print('Valor debe ser un número entero')
         return False
     else:
-        print('Valor debe ser mayor que 0')
         return value >= 1
 
 START_TIME = datetime(year=1, month=1, day=1, hour=9)
@@ -21,18 +20,21 @@ value = input('Número de clientes que usarán el cajero: ')
 if is_valid_input(value):
     n_clients = int(value)
 else:
+    print("Valor debe ser mayor a 0")
     sys.exit()
 
 value = input('Tiempo máximo que le toma llegar a un cliente: ')
 if is_valid_input(value):
     max_time_btw_arrivals = int(value)
 else:
+    print("Valor debe ser mayor a 0")
     sys.exit()
 
 value = input('Tiempo máximo de duración de un trámite: ')
 if is_valid_input(value):
     max_transaction_duration = int(value)
 else:
+    print("Valor debe ser mayor a 0")
     sys.exit()
 
 n_clients_waited = 0
