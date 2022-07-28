@@ -40,8 +40,8 @@ def attack(n, matrix, col, matrixEnemis):
     dicKey = 0
     arrayKeys = []
     annihilatedTeam = 0
-    group = []
     g = 0
+    #key_list = list(matrixEnemis.keys())
     for element in rowSort:
         interval.append(element)
     interval.append(1.0)
@@ -58,20 +58,26 @@ def attack(n, matrix, col, matrixEnemis):
                 arrayKeys.append(dicKey)
             
             for elementKey in arrayKeys:
+                key = elementKey
                 if col == elementKey and elementKey != 0:
                     matrixEnemis[elementKey-1] = matrixEnemis[elementKey-1]-1
-                elif col == elementKey and elementKey== 0:
-                     matrixEnemis[elementKey+1] = matrixEnemis[elementKey+1]-1
+                    g =  matrixEnemis[elementKey-1]
+                    gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+                elif col == elementKey and elementKey == 0:
+                    matrixEnemis[elementKey+1] = matrixEnemis[elementKey+1]-1
+                    g = matrixEnemis[elementKey+1]
+                    gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+
+
                 elif col != elementKey:
                     matrixEnemis[elementKey] = matrixEnemis[elementKey]-1
-                group.append(elementKey)
-            #For print group
-            for index, value in enumerate(group):
-                g = value+1
-            print("attack of enemies", col +1, "to Group" , g)
-            #For print enemis
-            for key in matrixEnemis:
-                print("Group", key+1, ':', matrixEnemis[key])
+                    g = matrixEnemis[elementKey]
+                    
+                    gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+                print("attack of enemies", col+1 , "to Group" , gr+1)
+                
+                for key in matrixEnemis:
+                    print("Group", key+1, ':', matrixEnemis[key])
             
         for index, value in matrixEnemis.items():
             if value <= 0:
