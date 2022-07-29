@@ -77,7 +77,13 @@ def attack(n, matrix, col, matrixEnemis):
             
         print("attack of enemies", col+1 , "to Group" , gr+1)
         for key in matrixEnemis:
-            print("Group", key+1, ':', matrixEnemis[key])
+            
+            if matrixEnemis[key] < 0:
+                zeroI = matrixEnemis[key]
+                zeroI = 0
+                print("Group", key+1, ':', zeroI)
+            else:
+                print("Group", key+1, ':', matrixEnemis[key])
     for index, value in matrixEnemis.items():
         if value <= 0:
             annihilatedTeam = index+1
