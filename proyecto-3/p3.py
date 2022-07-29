@@ -41,48 +41,49 @@ def attack(n, matrix, col, matrixEnemis):
     arrayKeys = []
     annihilatedTeam = 0
     g = 0
+    number = random.uniform(0,1)
     #key_list = list(matrixEnemis.keys())
     for element in rowSort:
         interval.append(element)
     interval.append(1.0)
     for r in range(n):
         allInterval = pd.Interval(interval[r], interval[r+1])
-        intervals.append(allInterval.length)
-    #print(intervals)
-    maximum = max(intervals)
+        has = number in allInterval
+        if has == True:
+            intervals.append(r)
+        #print(allInterval,allInterval.length )
+    print(intervals)
     arrayValues  = matrixEnemis.values()
-    while all(x > 0 for x in arrayValues):
+    while all(x >= 0 for x in arrayValues):
         for index, value in enumerate(intervals):
-            if maximum == value:
-                dicKey = index
-                arrayKeys.append(dicKey)
+            dicKey = value
+            arrayKeys.append(dicKey)
+        #print("arrayKeys",arrayKeys)
+        for elementKey in arrayKeys:
+            key = elementKey
+            if col == elementKey and elementKey != 0:
+                matrixEnemis[elementKey-1] = matrixEnemis[elementKey-1]-1
+                g =  matrixEnemis[elementKey-1]
+                gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+            elif col == elementKey and elementKey == 0:
+                matrixEnemis[elementKey+1] = matrixEnemis[elementKey+1]-1
+                g = matrixEnemis[elementKey+1]
+                gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+                     
+            elif col != elementKey :
+                matrixEnemis[elementKey] = matrixEnemis[elementKey]-1
+                g = matrixEnemis[elementKey]
+                gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
             
-            for elementKey in arrayKeys:
-                key = elementKey
-                if col == elementKey and elementKey != 0:
-                    matrixEnemis[elementKey-1] = matrixEnemis[elementKey-1]-1
-                    g =  matrixEnemis[elementKey-1]
-                    gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
-                elif col == elementKey and elementKey == 0:
-                    matrixEnemis[elementKey+1] = matrixEnemis[elementKey+1]-1
-                    g = matrixEnemis[elementKey+1]
-                    gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
-
-
-                elif col != elementKey:
-                    matrixEnemis[elementKey] = matrixEnemis[elementKey]-1
-                    g = matrixEnemis[elementKey]
-                    
-                    gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
-                print("attack of enemies", col+1 , "to Group" , gr+1)
-                
-                for key in matrixEnemis:
-                    print("Group", key+1, ':', matrixEnemis[key])
-            
-        for index, value in matrixEnemis.items():
-            if value <= 0:
-                annihilatedTeam = index+1
-                print("Group",annihilatedTeam,"is annihilated!")
+        print("attack of enemies", col+1 , "to Group" , gr+1)
+        for key in matrixEnemis:
+            print("Group", key+1, ':', matrixEnemis[key])
+    for index, value in matrixEnemis.items():
+        if value <= 0:
+            annihilatedTeam = index+1
+            print("Group",annihilatedTeam,"is annihilated!")
+        
+        
     print("============================ ")
     return annihilatedTeam
         
