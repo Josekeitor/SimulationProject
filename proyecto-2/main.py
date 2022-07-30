@@ -42,7 +42,6 @@ total_wait_time = 0
 total_transaction_duration = 0
 total_atm_inactivity_time = 0
 
-
 # Primer cliente
 client = 1
 time_btw_arrivals = 0
@@ -64,7 +63,6 @@ row = {
     'atm_inactivity_time': atm_inactivity_time
 }
 
-total_transaction_duration += transaction_duration
 # Guardar actividad del cliente
 data = [row]
 

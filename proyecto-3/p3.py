@@ -2,7 +2,29 @@ import numpy as np
 import random
 import pandas as pd
 
-def estocasticMatrix(n):
+def reshapeMatrix(matrix, newN, teamToRemove):
+    removedValues = []
+
+    for i in range(len(matrix)):
+        for j in range(len(matrix)):
+            if j == teamToRemove or i == teamToRemove and i != teamToRemove:
+                value = matrix[i][j]
+                if value > 0:
+                    removedValues.append(value)
+
+    print("Removed Values: ", removedValues)
+
+    newSubMatrix = np.delete(np.delete(matrix, teamToRemove, axis=0), teamToRemove, axis=1)
+
+    for i in range(len(newSubMatrix)):
+        for j in range(len(newSubMatrix)):
+            if newSubMatrix[i][j] != 0 :
+                newSubMatrix[i][j] += removedValues[i] / (len(newSubMatrix) -1)
+
+
+    return newSubMatrix
+
+def stochasticMatrix(n):
     a = 1
     b = 10
     matrix = (b-a)*np.random.random_sample((n,n)) +a
@@ -18,7 +40,7 @@ def estocasticMatrix(n):
     print(" ")
     return(matrix)
 
-def createEnemi(n):
+def createEnemy(n):
     print("Number of warriors for each group")
     values = []
     for i in range(n):
@@ -31,7 +53,7 @@ def createEnemi(n):
     print(" ")
     return enemis
 
-def attack(n, matrix, col, matrixEnemis):
+def attack(n, matrix, col, matrixEnemies):
     maximum = 0
     row = matrix[col]
     rowSort = np.sort(row, axis=0)
@@ -53,7 +75,7 @@ def attack(n, matrix, col, matrixEnemis):
             intervals.append(r)
         #print(allInterval,allInterval.length )
     print(intervals)
-    arrayValues  = matrixEnemis.values()
+    arrayValues  = matrixEnemies.values()
     while all(x >= 0 for x in arrayValues):
         for index, value in enumerate(intervals):
             dicKey = value
@@ -62,33 +84,38 @@ def attack(n, matrix, col, matrixEnemis):
         for elementKey in arrayKeys:
             key = elementKey
             if col == elementKey and elementKey != 0:
-                matrixEnemis[elementKey-1] = matrixEnemis[elementKey-1]-1
-                g =  matrixEnemis[elementKey-1]
-                gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+                matrixEnemies[elementKey - 1] = matrixEnemies[elementKey - 1] - 1
+                g =  matrixEnemies[elementKey - 1]
+                gr = list(matrixEnemies.keys())[list(matrixEnemies.values()).index(g)]
             elif col == elementKey and elementKey == 0:
-                matrixEnemis[elementKey+1] = matrixEnemis[elementKey+1]-1
-                g = matrixEnemis[elementKey+1]
-                gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+                matrixEnemies[elementKey + 1] = matrixEnemies[elementKey + 1] - 1
+                g = matrixEnemies[elementKey + 1]
+                gr = list(matrixEnemies.keys())[list(matrixEnemies.values()).index(g)]
                      
             elif col != elementKey :
-                matrixEnemis[elementKey] = matrixEnemis[elementKey]-1
-                g = matrixEnemis[elementKey]
-                gr = list(matrixEnemis.keys())[list(matrixEnemis.values()).index(g)]
+                matrixEnemies[elementKey] = matrixEnemies[elementKey] - 1
+                g = matrixEnemies[elementKey]
+                gr = list(matrixEnemies.keys())[list(matrixEnemies.values()).index(g)]
             
         print("attack of enemies", col+1 , "to Group" , gr+1)
-        for key in matrixEnemis:
-            
-            if matrixEnemis[key] < 0:
-                zeroI = matrixEnemis[key]
+        for key in matrixEnemies:
+            print("Group", key + 1, ':', matrixEnemies[key])
+    for index, value in matrixEnemies.items():
+        for key in matrixEnemies:
+
+            if matrixEnemies[key] < 0:
+                zeroI = matrixEnemies[key]
                 zeroI = 0
                 print("Group", key+1, ':', zeroI)
             else:
-                print("Group", key+1, ':', matrixEnemis[key])
-    for index, value in matrixEnemis.items():
+                print("Group", key+1, ':', matrixEnemies[key])
+    for index, value in matrixEnemies.items():
         if value <= 0:
             annihilatedTeam = index+1
             print("Group",annihilatedTeam,"is annihilated!")
-        
+            print("Original: ", matrix)
+            print("Reshaped: ", reshapeMatrix(matrix, n-1, annihilatedTeam-1))
+
         
     print("============================ ")
     return annihilatedTeam
@@ -98,9 +125,9 @@ def attack(n, matrix, col, matrixEnemis):
 
 def main():
     n = int(input("Enter the number of team = "))
-    matrix = estocasticMatrix(n)
-    matrixEnemis = createEnemi(n)
-    attack(n, matrix, random.randint(0, n-1), matrixEnemis)
+    matrix = stochasticMatrix(n)
+    matrixEnemis = createEnemy(n)
+    print('attack return: ', attack(n, matrix, random.randint(0, n-1), matrixEnemis))
     
     
     

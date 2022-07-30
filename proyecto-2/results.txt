@@ -1,23 +1,23 @@
   client    time_btw_arrivals  arrival_time      transaction_duration  service_start_time    service_end_time      wait_time    atm_inactivity_time
 --------  -------------------  --------------  ----------------------  --------------------  ------------------  -----------  ---------------------
-       1                    0  09:00 AM                             5  09:00 AM              09:05 AM                      0                      0
-       2                    2  09:02 AM                             8  09:05 AM              09:13 AM                      3                      0
-       3                    3  09:05 AM                             1  09:13 AM              09:14 AM                      8                      0
-       4                    4  09:09 AM                             5  09:14 AM              09:19 AM                      5                      0
-       5                   15  09:24 AM                             5  09:24 AM              09:29 AM                      0                      5
-       6                    9  09:33 AM                             8  09:33 AM              09:41 AM                      0                      4
-       7                   16  09:49 AM                            14  09:49 AM              10:03 AM                      0                      8
-       8                   17  10:06 AM                             5  10:06 AM              10:11 AM                      0                      3
-       9                   18  10:24 AM                            13  10:24 AM              10:37 AM                      0                     13
-      10                    9  10:33 AM                             7  10:37 AM              10:44 AM                      4                      0
+       1                    0  09:00 AM                             3  09:00 AM              09:03 AM                      0                      0
+       2                    1  09:01 AM                             3  09:03 AM              09:06 AM                      2                      0
+       3                    1  09:02 AM                             2  09:06 AM              09:08 AM                      4                      0
+       4                    1  09:03 AM                             3  09:08 AM              09:11 AM                      5                      0
+       5                    3  09:06 AM                             3  09:11 AM              09:14 AM                      5                      0
+       6                    4  09:10 AM                             3  09:14 AM              09:17 AM                      4                      0
+       7                    4  09:14 AM                             1  09:17 AM              09:18 AM                      3                      0
+       8                   10  09:24 AM                             2  09:24 AM              09:26 AM                      0                      6
+       9                   10  09:34 AM                             4  09:34 AM              09:38 AM                      0                      8
+      10                    2  09:36 AM                             1  09:38 AM              09:39 AM                      2                      0
 Tiempo de espera promedio por cliente
-20 min/10 clientes = 2.0 min de espera para ser atendidos
+25 min/10 clientes = 2.5 min de espera para ser atendidos
 
 Probabilidad de que un cliente espere en la fila
-4 clientes esperando / 10 clientes = 40.0%
+7 clientes esperando / 10 clientes = 70.0%
 
 Porcentaje de tiempo en el que el ATM estuvo inactivo
-33 min inactivo / 93 min total = 35.48%
+14 min inactivo / 36 min total = 38.89%
 
 Tiempo promedio de servicio
-71 min trámite / 10 clientes = 7.1 min de realizar el trámite
+22 min trámite / 10 clientes = 2.2 min de realizar el trámite
